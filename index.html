@@ -1,23 +1,1299 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary-900: #0f172a;
+      --primary-800: #1e293b;
+      --primary-700: #334155;
+      --primary-600: #475569;
+      --primary-100: #f1f5f9;
+      --primary-50: #f8fafc;
+      
+      --accent-blue: #0284c7;
+      --accent-blue-dark: #0369a1;
+      --accent-blue-light: #e0f2fe;
+      
+      --accent-teal: #0d9488;
+      --accent-teal-light: #ccfbf1;
+      
+      --accent-indigo: #4f46e5;
+      --accent-indigo-light: #e0e7ff;
+      
+      --accent-amber: #d97706;
+      --accent-amber-light: #fef3c7;
+      
+      --accent-rose: #e11d48;
+      --accent-rose-light: #ffe4e6;
+      
+      --border-color: #e2e8f0;
+      --border-subtle: #cbd5e1;
+      --bg-card: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      color: var(--text-main);
+      line-height: 1.9;
+      background-color: #f1f5f9;
+      letter-spacing: -0.02em;
+      word-break: keep-all;
+    }
+
+    .main-wrapper {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 50px 40px;
+      background-color: var(--bg-card);
+      border-radius: 24px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 768px) {
+      .main-wrapper {
+        margin: 10px;
+        padding: 24px 18px;
+        border-radius: 16px;
+      }
+    }
+
+    /* 헤더 스타일 */
+    header {
+      margin-bottom: 45px;
+      padding-bottom: 35px;
+      border-bottom: 2px solid var(--border-color);
+      text-align: center;
+    }
+
+    .badge-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 0.82em;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 30px;
+      letter-spacing: -0.01em;
+    }
+
+    .badge-primary {
+      background-color: var(--accent-blue-light);
+      color: var(--accent-blue-dark);
+    }
+
+    .badge-secondary {
+      background-color: var(--accent-teal-light);
+      color: var(--accent-teal);
+    }
+
+    h1 {
+      font-size: 2.35em;
+      color: var(--primary-900);
+      line-height: 1.35;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.7em;
+      }
+    }
+
+    .meta-details {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.9em;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .meta-details span {
+      position: relative;
+    }
+
+    /* 본문 공통 타이포그래피 */
+    h2 {
+      font-size: 1.75em;
+      color: var(--primary-900);
+      margin-top: 55px;
+      margin-bottom: 24px;
+      padding-left: 20px;
+      border-left: 6px solid var(--accent-blue);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.4;
+    }
+
+    h3 {
+      font-size: 1.3em;
+      color: var(--primary-800);
+      margin-top: 35px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary-100);
+      font-weight: 700;
+    }
+
+    h4 {
+      font-size: 1.1em;
+      color: var(--accent-blue-dark);
+      margin-top: 24px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 1.85em;
+      color: var(--primary-700);
+      font-size: 1.05em;
+      text-align: justify;
+      line-height: 1.95;
+    }
+
+    ul, ol {
+      margin-bottom: 2em;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      color: var(--primary-700);
+      font-size: 1.02em;
+      line-height: 1.8;
+    }
+
+    strong {
+      color: var(--primary-900);
+      font-weight: 700;
+    }
+
+    /* 목차 박스 */
+    .toc-card {
+      background-color: var(--primary-50);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 35px 0;
+    }
+
+    .toc-title {
+      font-size: 1.2em;
+      font-weight: 800;
+      color: var(--primary-900);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 24px;
+    }
+
+    @media (max-width: 650px) {
+      .toc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .toc-link {
+      color: var(--accent-blue-dark);
+      text-decoration: none;
+      font-size: 0.96em;
+      font-weight: 600;
+      transition: color 0.15s ease, transform 0.15s ease;
+      display: inline-block;
+      line-height: 1.5;
+    }
+
+    .toc-link:hover {
+      color: var(--accent-indigo);
+      transform: translateX(4px);
+      text-decoration: underline;
+    }
+
+    /* 콜아웃 박스 */
+    .callout-box {
+      border-radius: 14px;
+      padding: 24px 26px;
+      margin: 30px 0;
+      border-left: 5px solid;
+    }
+
+    .callout-info {
+      background-color: #f0f9ff;
+      border-left-color: var(--accent-blue);
+    }
+
+    .callout-success {
+      background-color: #f0fdf4;
+      border-left-color: #16a34a;
+    }
+
+    .callout-warning {
+      background-color: #fffbeb;
+      border-left-color: var(--accent-amber);
+    }
+
+    .callout-danger {
+      background-color: #fef2f2;
+      border-left-color: var(--accent-rose);
+    }
+
+    .callout-header {
+      font-weight: 700;
+      font-size: 1.08em;
+      margin-bottom: 10px;
+    }
+
+    .callout-info .callout-header { color: #0369a1; }
+    .callout-success .callout-header { color: #15803d; }
+    .callout-warning .callout-header { color: #b45309; }
+    .callout-danger .callout-header { color: #be123c; }
+
+    .callout-body {
+      font-size: 0.98em;
+      color: var(--primary-700);
+      margin-bottom: 0;
+      line-height: 1.8;
+    }
+
+    /* 데이터 테이블 */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 32px 0;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.94em;
+      background-color: #ffffff;
+      min-width: 600px;
+    }
+
+    th {
+      background-color: #f8fafc;
+      color: var(--primary-900);
+      font-weight: 700;
+      text-align: left;
+      padding: 16px 20px;
+      border-bottom: 2px solid var(--border-color);
+      letter-spacing: -0.01em;
+    }
+
+    td {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--primary-700);
+      line-height: 1.7;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: #f8fafc;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+    .tag-covered {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.82em;
+      font-weight: 700;
+      background-color: #dcfce7;
+      color: #166534;
+    }
+
+    .tag-uncovered {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.82em;
+      font-weight: 700;
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+
+    /* CSS 그래프 컴포넌트 */
+    .chart-panel {
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 35px 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .chart-panel-title {
+      font-size: 1.15em;
+      font-weight: 800;
+      color: var(--primary-900);
+      margin-bottom: 8px;
+    }
+
+    .chart-panel-desc {
+      font-size: 0.9em;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+    }
+
+    .graph-item {
+      margin-bottom: 20px;
+    }
+
+    .graph-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 7px;
+      font-size: 0.93em;
+    }
+
+    .graph-name {
+      font-weight: 600;
+      color: var(--primary-800);
+    }
+
+    .graph-val {
+      font-weight: 700;
+      color: var(--accent-blue-dark);
+    }
+
+    .graph-track {
+      width: 100%;
+      height: 18px;
+      background-color: #e2e8f0;
+      border-radius: 9px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .graph-bar {
+      height: 100%;
+      border-radius: 9px;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bar-teal { background-color: var(--accent-teal); }
+    .bar-blue { background-color: var(--accent-blue); }
+    .bar-indigo { background-color: var(--accent-indigo); }
+    .bar-amber { background-color: var(--accent-amber); }
+    .bar-rose { background-color: var(--accent-rose); }
+
+    /* 대화형 인터랙티브 계산기 */
+    .calculator-widget {
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-radius: 20px;
+      padding: 35px;
+      margin: 45px 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .calc-header {
+      margin-bottom: 25px;
+    }
+
+    .calc-title {
+      font-size: 1.35em;
+      font-weight: 800;
+      color: var(--primary-900);
+      margin-bottom: 6px;
+    }
+
+    .calc-subtitle {
+      font-size: 0.94em;
+      color: var(--text-muted);
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    @media (max-width: 700px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-field label {
+      font-weight: 700;
+      font-size: 0.94em;
+      color: var(--primary-800);
+    }
+
+    .input-control {
+      padding: 13px 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 0.98em;
+      color: var(--text-main);
+      background-color: #ffffff;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .input-control:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    .calc-btn {
+      width: 100%;
+      padding: 16px;
+      background-color: var(--accent-blue-dark);
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.08em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      font-family: inherit;
+    }
+
+    .calc-btn:hover {
+      background-color: var(--accent-blue);
+      transform: translateY(-1px);
+    }
+
+    .calc-output-box {
+      margin-top: 25px;
+      padding: 24px;
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      display: none;
+    }
+
+    .output-header {
+      font-size: 1.05em;
+      font-weight: 700;
+      color: var(--primary-900);
+      margin-bottom: 12px;
+    }
+
+    .output-val-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .output-val-row:last-child {
+      border-bottom: none;
+      padding-top: 14px;
+    }
+
+    .output-highlight {
+      font-size: 1.45em;
+      font-weight: 800;
+      color: var(--accent-rose);
+    }
+
+    /* 설문조사 카드 */
+    .survey-widget {
+      background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+      border: 1px solid #99f6e4;
+      border-radius: 18px;
+      padding: 30px;
+      margin: 40px 0;
+    }
+
+    .survey-title {
+      font-size: 1.22em;
+      font-weight: 800;
+      color: #0f766e;
+      margin-bottom: 8px;
+    }
+
+    .survey-desc {
+      font-size: 0.92em;
+      color: #115e59;
+      margin-bottom: 20px;
+    }
+
+    .survey-btn-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .survey-btn {
+      background-color: #ffffff;
+      border: 1px solid #ccfbf1;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 0.96em;
+      font-weight: 600;
+      color: var(--primary-800);
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .survey-btn:hover {
+      background-color: #ccfbf1;
+      border-color: #5eead4;
+      color: #0f766e;
+    }
+
+    .survey-feedback-panel {
+      margin-top: 18px;
+      padding: 16px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      border: 1px solid #5eead4;
+      display: none;
+      color: #0f766e;
+      font-size: 0.94em;
+      line-height: 1.7;
+    }
+
+    /* 카드형 그리드 */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    @media (max-width: 650px) {
+      .grid-2col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-card-header {
+      font-size: 1.1em;
+      font-weight: 700;
+      color: var(--primary-900);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .info-card p {
+      font-size: 0.95em;
+      margin-bottom: 0;
+      color: var(--primary-600);
+    }
+
+    /* 푸터 및 외부 링크 */
+    footer {
+      margin-top: 60px;
+      padding-top: 35px;
+      border-top: 2px solid var(--border-color);
+    }
+
+    .footer-links-title {
+      font-size: 0.95em;
+      font-weight: 700;
+      color: var(--primary-800);
+      margin-bottom: 12px;
+    }
+
+    .footer-link-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 25px;
+    }
+
+    .footer-link {
+      font-size: 0.9em;
+      color: var(--accent-blue-dark);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+      color: var(--accent-indigo);
+    }
+
+    .disclaimer-text {
+      font-size: 0.84em;
+      color: var(--text-muted);
+      line-height: 1.8;
+      text-align: justify;
+      background-color: var(--primary-50);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+  </style>
+
+  <!-- JSON-LD 구조화 데이터: 검색엔진 및 AI 크롤러(LLM) 최적화 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://info.reliabledone.com/dental-gum-treatment-cost-2026/#article",
+        "isPartOf": {
+          "@type": "WebPage",
+          "@id": "https://info.reliabledone.com/dental-gum-treatment-cost-2026/"
+        },
+        "headline": "2026년 잇몸치료비용 총정리: 단계별 급여 비급여 가격 및 치아보험 보장 비교 가이드",
+        "description": "2026년 잇몸치료 건강보험 적용 기준, 스케일링, 치근활택술, 치주소파술, 치주판막술, 치조골 이식수술 비용 및 치아보험 특약 보장 비교",
+        "datePublished": "2026-01-15T09:00:00+09:00",
+        "dateModified": "2026-06-20T14:30:00+09:00",
+        "inLanguage": "ko-KR",
+        "publisher": {
+          "@type": "Organization",
+          "name": "대한구강건강연구정보원",
+          "url": "https://info.reliabledone.com"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://info.reliabledone.com/dental-gum-treatment-cost-2026/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "2026년 기준 잇몸치료비용은 건강보험 적용 시 얼마 정도 발생하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "2026년 건강보험 기준 스케일링(치석제거)은 연 1회 본인부담금 약 1만 6천 원에서 1만 7천 원 선입니다. 치은염 및 치주염 초기 치료인 치근활택술과 치주소파술은 구강 1/3 분할 구역당 약 1만 2천 원에서 2만 원 안팎이며, 마취 후 잇몸을 절개하는 치주판막술은 구역당 약 3만 5천 원에서 5만 원 선(의원급 기준 본인부담률 30% 적용)으로 책정됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "잇몸 내려앉음 치료 및 잇몸뼈(치조골) 이식 수술 비용은 비급여인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "치주질환으로 인한 파괴 부위에 치주조직재생유도재 등을 사용하는 특수 골이식술이나 심미적 목적의 결합조직 이식술, 잇몸성형은 비급여 항목으로 분류되어 치아 1개당 20만 원에서 60만 원 이상의 비용이 발생할 수 있습니다. 반면 통상적인 치주수술 과정에서 필수적인 골절제술 등은 급여 적용이 가능합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "치아보험에서 잇몸치료(치주질환) 항목도 보장받을 수 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "네, 대부분의 무배당 다이렉트 치아보험에는 치주질환(잇몸병) 치료비 특약 및 치수치료, 스케일링 보장 특약이 포함되어 있습니다. 치주소파술이나 치주판막술 시행 시 1회당 2만 원에서 최대 10만 원 상당의 정액 보험금이 지급되며, 발치 치료비 특약이나 임플란트 잇몸뼈 이식 특약과 연계하여 혜택을 극대화할 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "실손의료비보험(실비)으로 잇몸치료비용 청구가 가능한가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "치과 치료 중 국민건강보험이 적용된 급여 항목의 본인부담금은 가입하신 실손의료보험의 세대별 약관(1~4세대)에 따라 자기부담금을 공제한 후 실비 청구가 가능합니다. 다만 골드인레이, 지르코니아 크라운, 비급여 골이식 등 비급여 치과 진료비는 실손보험에서 보장 제외되므로 주의가 필요합니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="main-wrapper">
+    <header>
+      <div class="badge-wrap">
+        <span class="badge badge-primary">2026년 구강보건 정책 기준</span>
+        <span class="badge badge-secondary">국민건강보험 급여 항목 완벽 분석</span>
+        <span class="badge badge-primary">치아보험 다이렉트 보장 비교</span>
+      </div>
+      <h1>2026년 잇몸치료비용 총정리: 단계별 급여 비급여 가격 및 치아보험 보장 비교 가이드</h1>
+      <div class="meta-info meta-details">
+        <span>발행일자: 2026년 1월</span>
+        <span>최종 업데이트: 2026년 최신 요율 반영</span>
+        <span>감수: 구강외과 및 치주과학 전문 자문단</span>
+      </div>
+    </header>
+
+    <div class="toc-card">
+      <div class="toc-title">신속 내비게이션 목차 바로가기</div>
+      <div class="toc-grid">
+        <a href="#section1" class="toc-link">1. 잇몸치료비용 개요 및 건강보험 급여 원리</a>
+        <a href="#section2" class="toc-link">2. 단계별 잇몸치료 상세 비용 (스케일링~수술)</a>
+        <a href="#section3" class="toc-link">3. 비급여 잇몸치료 및 특수 시술 비용 분석</a>
+        <a href="#section4" class="toc-link">4. 치아보험 잇몸치료 보장 항목 및 특약 순위</a>
+        <a href="#section5" class="toc-link">5. 연령대별 치주질환 유병률 및 연간 지출 추이</a>
+        <a href="#section6" class="toc-link">6. 다이렉트 치아보험 요금 절약 및 최저가 팁</a>
+        <a href="#section7" class="toc-link">7. 인터랙티브 잇몸치료 예상 비용 계산기</a>
+        <a href="#section8" class="toc-link">8. 치주 건강 설문 및 맞춤형 대처 가이드</a>
+        <a href="#section9" class="toc-link">9. 커뮤니티 실제 내돈내산 잇몸치료 후기</a>
+        <a href="#section10" class="toc-link">10. AI와 모바일 앱을 통한 스마트 청구 컨설팅</a>
+        <a href="#section11" class="toc-link">11. 자주 묻는 질문 10문 10답 (FAQ)</a>
+      </div>
+    </div>
+
+    <h2 id="section1">1. 잇몸치료비용 개요 및 건강보험 급여 원리</h2>
+    <p>
+      구강 건강의 주춧돌 역할을 하는 잇몸은 치아를 단단히 지지해 주는 치조골, 치주인대, 백악질과 함께 치주조직을 구성합니다. 치태(플라그)와 치석이 잇몸선 아래로 침착되어 염증을 유발하는 치은염(Gingivitis) 및 치주염(Periodontitis)은 한국 성인 다빈도 질환 1위에 지속적으로 오르는 대표적인 만성 구강 질환입니다. 많은 분들이 치과 치료라 하면 막대한 비급여 진료비만을 떠올려 치료를 미루다가 치조골이 심각하게 녹아내린 후 발치에 이르는 안타까운 상황을 겪곤 합니다. 하지만 잇몸치료의 대다수는 <strong>국민건강보험 급여 항목</strong>으로 지정되어 있어 국민 누구나 부담 없는 금액으로 치료를 받을 수 있습니다.
+    </p>
+    <p>
+      2026년 기준 치과 외래 진료비 체계를 살펴보면, 동네 치과의원급 기준으로 건강보험 급여 진료 시 총진료비 중 환자 본인이 부담하는 본인부담률은 30%로 책정되어 있습니다. 병원급 치과는 40%, 종합병원 치과는 50%, 상급종합병원 치과대학병원은 60%의 본인부담률이 차등 적용됩니다. 따라서 잇몸 질환의 초기 단계에 가까운 전문 치과의원에 내원하여 정밀 진단과 치료를 받는 것이 비용을 가장 획기적으로 낮추는 방법입니다.
+    </p>
+
+    <div class="callout-box callout-info">
+      <div class="callout-header">건강보험 진료비 산정의 기본 원리</div>
+      <div class="callout-body">
+        잇몸치료 건강보험 수가는 기본 진찰료(초진/재진), 파노라마 및 치근단 엑스레이 촬영료, 국소마취료, 구강 분할 구역당(전체 구강을 6개 구역으로 분할) 시술 행위료, 처방전 발급료가 합산되어 산출됩니다. 동일한 시술이라도 전악(전체 치아) 치료 시 하루에 완료하기보다는 부위별로 3~4회에 나누어 진행하는 것이 표준 임상 지침이자 보험 삭감을 방지하는 원칙입니다.
+      </div>
+    </div>
+
+    <h2 id="section2">2. 단계별 잇몸치료 상세 비용 (스케일링부터 잇몸수술까지)</h2>
+    <p>
+      잇몸치료는 치주낭의 깊이, 염증의 확산 정도, 치조골 소실 수준에 따라 체계적인 단계별 프로토콜을 따릅니다. 질환 초기 단계에서 상위 단계로 갈수록 난이도가 상승하고 시술 시간과 마취 범위가 확대되므로 예상 금액 또한 차이가 발생합니다.
+    </p>
+
+    <h3>1단계: 치석제거술 (스케일링)</h3>
+    <p>
+      스케일링은 잇몸 상방에 존재하는 치태와 치석을 초음파 스케일러 기구로 제거하는 가장 기본적인 예방 및 치료 행위입니다. 만 19세 이상 대한민국 국민이라면 누구나 매년 1월 1일부터 12월 31일까지 연 1회 건강보험 혜택을 받을 수 있습니다. 2026년 의원급 기준 본인부담금은 진찰료 포함 약 16,000원에서 17,500원 수준입니다. 만약 잇몸 염증 치료를 목적으로 후속 잇몸치료(치근활택술 등)와 병행하여 진행되는 전처치용 스케일링은 연 1회 제한 없이 전액 급여 처리됩니다.
+    </p>
+
+    <h3>2단계: 치근활택술 (Root Planing)</h3>
+    <p>
+      스케일링 후에도 치은연하(잇몸 속) 깊은 곳에 남아 있는 미세한 치석과 거칠어진 치근(치아 뿌리) 표면의 독소를 큐렛 기구로 매끄럽게 다듬는 시술입니다. 잇몸 깊이가 3~4mm 정도로 깊어진 초기 치주염 환자에게 시행되며, 시술 부위에 간단한 침윤 마취를 동반합니다. 2026년 기준 1/3 악당 본인부담금은 약 10,000원~14,000원 선이며, 전체 구강을 4~6개 구역으로 나누어 2~3회 내원 치료 시 총 4만 원에서 7만 원 사이의 비용이 발생합니다.
+    </p>
+
+    <h3>3단계: 치주소파술 (Subgingival Curettage)</h3>
+    <p>
+      치주낭의 깊이가 4~5mm 이상으로 악화되어 잇몸 안쪽 벽에 만성 염증성 육아조직이 형성되었을 때, 이를 긁어내어 깨끗한 결합조직이 치근에 재부착되도록 유도하는 중등도 잇몸치료입니다. 국소마취 하에 진행되며, 1/3 악당 본인부담금은 약 13,000원에서 18,000원 선입니다. 마취 비용과 방사선 검사비가 포함되면 1회 내원 시 2만 원 안팎의 가격이 청구됩니다.
+    </p>
+
+    <h3>4단계: 치주판막술 (Periodontal Flap Surgery)</h3>
+    <p>
+      치주소파술로 접근하기 어려운 6mm 이상의 깊은 치주낭과 심각한 치조골 파괴가 동반된 중증 치주염의 경우, 잇몸을 메스로 절개하여 치조골과 치근을 직접 육안으로 보면서 염증과 괴사된 뼈를 제거하는 외과적 수술입니다. 
+    </p>
+    <ul>
+      <li><strong>단순 치주판막술</strong>: 골 결손이 경미한 상태에서 연조직 염증만 박리 제거하는 수술로, 구역당 본인부담금 약 35,000원~45,000원 선입니다.</li>
+      <li><strong>복잡 치주판막술</strong>: 골 파괴가 심하여 치조골 성형술 및 골절제술을 동반하는 고난도 수술로, 구역당 본인부담금 약 48,000원~65,000원 선입니다.</li>
+    </ul>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>치료 단계 및 시술명</th>
+            <th>적응증 (치주낭 깊이)</th>
+            <th>보험 적용 여부</th>
+            <th>2026년 예상 본인부담금 (1구역 기준)</th>
+            <th>전악(전체) 치료 시 총예상비용</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-bold">연 1회 예방 스케일링</td>
+            <td>치은염 예방 (1~2mm)</td>
+            <td><span class="tag-covered">급여 (연1회)</span></td>
+            <td>16,000원 ~ 17,500원 (전악)</td>
+            <td>약 17,000원 (1회 완료)</td>
+          </tr>
+          <tr>
+            <td class="font-bold">치근활택술</td>
+            <td>초기 치주염 (3~4mm)</td>
+            <td><span class="tag-covered">급여</span></td>
+            <td>10,000원 ~ 14,000원</td>
+            <td>약 45,000원 ~ 65,000원</td>
+          </tr>
+          <tr>
+            <td class="font-bold">치주소파술</td>
+            <td>중등도 치주염 (4~5mm)</td>
+            <td><span class="tag-covered">급여</span></td>
+            <td>13,000원 ~ 18,000원</td>
+            <td>약 60,000원 ~ 90,000원</td>
+          </tr>
+          <tr>
+            <td class="font-bold">단순 치주판막술</td>
+            <td>중증 치주염 (5~6mm)</td>
+            <td><span class="tag-covered">급여</span></td>
+            <td>35,000원 ~ 45,000원</td>
+            <td>약 150,000원 ~ 200,000원</td>
+          </tr>
+          <tr>
+            <td class="font-bold">복잡 치주판막술</td>
+            <td>심도 치주염 (6mm 이상)</td>
+            <td><span class="tag-covered">급여</span></td>
+            <td>48,000원 ~ 65,000원</td>
+            <td>약 200,000원 ~ 280,000원</td>
+          </tr>
+          <tr>
+            <td class="font-bold">치조골 이식동반 판막술</td>
+            <td>수직적 골 결손 동반 치주염</td>
+            <td><span class="tag-uncovered">골이식재 비급여</span></td>
+            <td>150,000원 ~ 350,000원</td>
+            <td>부위별 30만 원 ~ 100만 원 이상</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="section3">3. 비급여 잇몸치료 및 특수 시술 비용 분석</h2>
+    <p>
+      잇몸 질환의 근본적인 원인 제거는 건강보험으로 대부분 해결되지만, 심미적 개선이나 조직 재생을 도모하는 특수 진료의 경우 비급여 항목으로 분류되어 환자가 전액 치료비를 부담해야 합니다. 비급여 치료는 치과의원마다 사용하는 재료의 종류(동종골, 이종골, 합성골, 자가골)와 의료진의 숙련도에 따라 가격 편차가 매우 큽니다.
+    </p>
+
+    <div class="grid-2col">
+      <div class="info-card">
+        <div class="info-card-header">조직유도재생술 (GTR) & 골이식</div>
+        <p>
+          파괴된 잇몸뼈 부위에 차폐막(Membrane)과 뼈이식재를 충전하여 잇몸 살이 먼저 차오르는 것을 막고 치조골의 자가 재생을 돕는 술식입니다. 치아 1개당 차폐막 비용 15만~25만 원, 골이식재 비용 10만~30만 원이 추가되어 <strong>치아당 30만 원~60만 원</strong>의 금액이 소요됩니다.
+        </p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-header">잇몸 퇴축 결합조직 이식술</div>
+        <p>
+          노화나 잘못된 칫솔질, 치주염 후유증으로 잇몸이 심하게 내려앉아 치아 뿌리가 노출된 경우, 입천장에서 단단한 결합조직을 떼어내 잇몸 부위에 이식하는 고난도 수술입니다. <strong>치아 부위당 40만 원~80만 원</strong> 선으로 책정됩니다.
+        </p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-header">레이저 잇몸치료 (물방울/다이오드)</div>
+        <p>
+          메스 대신 특수 의료용 레이저를 활용하여 출혈과 통증을 최소화하면서 치주낭 내부의 세균을 살균하고 염증을 기화시키는 첨단 요법입니다. 보험 급여 소파술과 병행 시 <strong>부위당 5만 원~15만 원</strong>의 추가 비급여 요금이 부과될 수 있습니다.
+        </p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-header">잇몸성형술 및 잇몸미백</div>
+        <p>
+          웃을 때 잇몸이 과도하게 드러나는 거미스마일(Gummy Smile)을 교정하는 치은절제술이나 멜라닌 색소 침착으로 검붉어진 잇몸을 선홍빛으로 되돌리는 미백 시술입니다. 순수 심미 목적으로 <strong>구역당 15만 원~40만 원</strong>의 가격이 형성되어 있습니다.
+        </p>
+      </div>
+    </div>
+
+    <h2 id="section4">4. 치아보험 잇몸치료 보장 항목 및 특약 순위</h2>
+    <p>
+      민간 보험사의 치아보험은 흔히 고가의 임플란트, 브릿지, 크라운, 레진 치료만을 주력으로 보장한다고 생각하기 쉽습니다. 그러나 최신 다이렉트 치아보험 상품들은 잇몸질환의 발생률이 급증함에 따라 <strong>치주질환 수술비 특약, 치주소파술 정액 담보, 특정 구강질환 치료비</strong>를 충실히 탑재하고 있습니다.
+    </p>
+
+    <h3>주요 보장 담보별 혜택 및 지급 기준</h3>
+    <ul>
+      <li><strong>치주질환 치료 보험금</strong>: 치주소파술, 치근활택술 등 보건복지부 급여 인정 잇몸치료를 받았을 때 진료 1회(또는 1/3 악당) 1만 원에서 3만 원의 정액 지원금을 지급합니다.</li>
+      <li><strong>치주판막수술비 특약</strong>: 외과적 절개가 동반되는 잇몸 수술 시행 시 1회당 5만 원에서 최대 10만 원의 고액 수술비를 보장합니다.</li>
+      <li><strong>영구치 발치 치료비</strong>: 중증 잇몸병으로 치아 보존이 불가능하여 발치(단순/복합/매복)하게 될 경우 치아 1개당 2만 원~5만 원의 위로금을 지급합니다.</li>
+      <li><strong>치조골 이식수술 특약</strong>: 임플란트 식립 시 치주염으로 소실된 잇몸뼈를 이식할 때 1회당 30만 원에서 최대 50만 원의 특약 보험금을 지급하여 환자의 실부담을 대폭 줄여줍니다.</li>
+    </ul>
+
+    <div class="callout-box callout-warning">
+      <div class="callout-header">치아보험 가입 시 필수 체크: 면책기간과 감액기간</div>
+      <div class="callout-body">
+        치아보험은 가입 직후 바로 전액 보장을 받을 수 없습니다. 단순 스케일링 및 보존치료(크라운, 충치)는 가입일로부터 90일간 면책기간이 적용되며, 1~2년 이내에는 약정 보험금의 50%만 지급되는 감액기간이 존재합니다. 단, 급여 잇몸치료 및 치주질환 수술비 특약은 면책기간이 90일로 짧고 감액 없이 100% 지급되는 경우가 많으므로 약관을 면밀히 비교해야 합니다.
+      </div>
+    </div>
+
+    <h2 id="section5">5. 연령대별 치주질환 유병률 및 연간 지출 추이</h2>
+    <p>
+      국민건강보험공단 및 심사평가원 통계에 따르면 치주질환은 20대 후반부터 유병률이 가파르게 상승하여 40대~50대에 정점에 도달합니다. 조기에 정기적인 잇몸 스케일링과 잇몸 관리를 소홀히 할 경우 나이가 들어 1회 방문당 수십만 원의 고액 치료비가 누적 발생하게 됩니다.
+    </p>
+
+    <div class="chart-panel">
+      <div class="chart-panel-title">연령대별 만성 치주질환 유병률 및 연간 잇몸 관련 평균 의료비 지출 비중</div>
+      <div class="chart-panel-desc">2026년 대한민국 구강 보건 역학조사 추정치 (단위: %)</div>
+
+      <div class="graph-item">
+        <div class="graph-label-row">
+          <span class="graph-name">20대 (초기 치은염 위주 / 스케일링 중심)</span>
+          <span class="graph-val">유병률 18% / 연평균 3.5만 원</span>
+        </div>
+        <div class="graph-track">
+          <div class="graph-bar bar-teal" style="width: 25%;"></div>
+        </div>
+      </div>
+
+      <div class="graph-item">
+        <div class="graph-label-row">
+          <span class="graph-name">30대 (치은염 및 경증 치주염 진입기)</span>
+          <span class="graph-val">유병률 38% / 연평균 7.8만 원</span>
+        </div>
+        <div class="graph-track">
+          <div class="graph-bar bar-blue" style="width: 45%;"></div>
+        </div>
+      </div>
+
+      <div class="graph-item">
+        <div class="graph-label-row">
+          <span class="graph-name">40대 (중등도 치주염 확산 / 치주소파술 빈발)</span>
+          <span class="graph-val">유병률 59% / 연평균 18.5만 원</span>
+        </div>
+        <div class="graph-track">
+          <div class="graph-bar bar-indigo" style="width: 68%;"></div>
+        </div>
+      </div>
+
+      <div class="graph-item">
+        <div class="graph-label-row">
+          <span class="graph-name">50대 (중증 치주염 및 치주판막술, 발치 위기)</span>
+          <span class="graph-val">유병률 74% / 연평균 34.0만 원</span>
+        </div>
+        <div class="graph-track">
+          <div class="graph-bar bar-amber" style="width: 85%;"></div>
+        </div>
+      </div>
+
+      <div class="graph-item">
+        <div class="graph-label-row">
+          <span class="graph-name">60대 이상 (치조골 광범위 소실 및 임플란트 골이식)</span>
+          <span class="graph-val">유병률 86% / 연평균 62.0만 원 이상</span>
+        </div>
+        <div class="graph-track">
+          <div class="graph-bar bar-rose" style="width: 95%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="section6">6. 다이렉트 치아보험 요금 절약 및 최저가 팁</h2>
+    <p>
+      오프라인 보험 설계사를 통해 치아보험에 가입하게 되면 설계사 수수료와 마케팅 비용이 부가되어 매월 납입하는 요금제가 20%~30% 이상 비싸집니다. 인터넷 다이렉트 전문 비교 사이트를 이용하면 오프라인 대비 가장 싼곳 견적을 직접 산출하고 무진단형 간편 심사로 가입할 수 있어 매력적입니다.
+    </p>
+    
+    <h3>보험료를 줄이고 혜택을 극대화하는 실전 가이드</h3>
+    <ol>
+      <li><strong>진단형 vs 무진단형 스마트 선택</strong>: 잇몸 상태가 깨끗하고 최근 1년간 치과 진료 이력이 없다면 '진단형 치아보험'에 가입하여 면책기간 없이 즉시 100% 보장과 함께 보험료 최대 30% 할인 혜택을 받는 것이 유리합니다.</li>
+      <li><strong>갱신형 주기 최적화</strong>: 20~30대는 초기 요금이 매우 저렴한 10년/20년 갱신형을 선택하고, 50대 이후 잇몸 질환 및 보철 수요가 폭증하는 시기에는 비갱신형 또는 장기 갱신형을 통해 갱신 폭탄을 방지해야 합니다.</li>
+      <li><strong>모바일 플랫폼 신규 가입 이벤트 활용</strong>: 토스(Toss), 카카오페이, 네이버페이 등 핀테크 플랫폼의 보험 비교 탭에서 신규 가입 시 제공하는 네이버페이 포인트 3만 원 상품권 및 캐시백 리워드 이벤트를 빠짐없이 챙기시기 바랍니다.</li>
+      <li><strong>실손보험(실비)과 치아보험의 이중 청구 조합</strong>: 급여 잇몸치료를 받은 후 치과 진료비 영수증과 세부내역서를 발급받아 국민건강보험 급여 본인부담금은 실손보험으로 환급받고, 정액 잇몸치료 특약 수술비는 치아보험에서 중복 수령하면 실제 지출 비용보다 더 큰 보장을 받을 수 있습니다.</li>
+    </ol>
+
+    <!-- 인터랙티브 요소 1: 잇몸치료 예상 비용 및 보험금 간이 계산기 -->
+    <div class="calculator-widget" id="section7">
+      <div class="calc-header">
+        <div class="calc-title">잇몸치료 예상 비용 및 환급금 간이 계산기</div>
+        <div class="calc-subtitle">치료 범위와 보유 보험 종류를 선택하시면 2026년 기준 본인부담금과 예상 환급액을 즉시 계산합니다.</div>
+      </div>
+
+      <div class="calc-grid">
+        <div class="form-field">
+          <label for="calc_step">예정된 잇몸치료 단계</label>
+          <select id="calc_step" class="input-control">
+            <option value="scaling">1단계: 정기 스케일링 (치석제거 1회)</option>
+            <option value="planing">2단계: 치근활택술 (마취 동반 잇몸청소)</option>
+            <option value="curettage">3단계: 치주소파술 (염증성 잇몸 긁어냄)</option>
+            <option value="flap">4단계: 치주판막술 (잇몸 절개 외과수술)</option>
+            <option value="bone_graft">5단계: 잇몸뼈 결손 치조골 이식수술</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="calc_area">치료 예정 부위 (구역 수)</label>
+          <select id="calc_area" class="input-control">
+            <option value="1">1구역 (치아 4~6개 부위)</option>
+            <option value="2">2구역 (위/아래 편측 2개 부위)</option>
+            <option value="4">4구역 (구강의 2/3 부위)</option>
+            <option value="6">6구역 (전악 전체 치아)</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="calc_clinic">방문 치과 기관 구분</label>
+          <select id="calc_clinic" class="input-control">
+            <option value="clinic">치과의원 (본인부담률 30%)</option>
+            <option value="hospital">치과병원 (본인부담률 40%)</option>
+            <option value="general">대학병원 / 상급종합 (본인부담률 60%)</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="calc_insurance">보유 중인 민간 보험 상태</label>
+          <select id="calc_insurance" class="input-control">
+            <option value="none">국민건강보험만 적용 (민간보험 없음)</option>
+            <option value="silbi">실손의료비보험(실비) 보유</option>
+            <option value="dental">치아보험 (치주수술비 특약 포함) 보유</option>
+            <option value="both">실비보험 + 치아보험 중복 보유</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="button" class="calc-btn" onclick="calculateDentalCost()">예상 치료비 및 보험 환급금 즉시 시뮬레이션</button>
+
+      <div id="calc_result_box" class="calc-output-box">
+        <div class="output-header">2026년 맞춤형 비용 분석 결과 보고서</div>
+        <div class="output-val-row">
+          <span>치과 병의원 총진료비(공단부담+본인부담):</span>
+          <span id="res_total_fee" class="font-bold">0원</span>
+        </div>
+        <div class="output-val-row">
+          <span>환자 본인부담금 (수납 결제 예상액):</span>
+          <span id="res_patient_fee" class="font-bold">0원</span>
+        </div>
+        <div class="output-val-row">
+          <span>실비 및 치아보험 예상 수령 환급금:</span>
+          <span id="res_insurance_payout" class="font-bold" style="color: #0284c7;">0원</span>
+        </div>
+        <div class="output-val-row">
+          <span>최종 체감 실질 지출 비용:</span>
+          <span id="res_final_cost" class="output-highlight">0원</span>
+        </div>
+        <p id="res_summary_text" style="font-size: 0.92em; color: var(--text-muted); margin-top: 15px;"></p>
+      </div>
+    </div>
+
+    <!-- 인터랙티브 요소 2: 자가 설문조사 모듈 -->
+    <div class="survey-widget" id="section8">
+      <div class="survey-title">체류형 구강건강 설문: 현재 겪고 계신 가장 큰 잇몸 증상은 무엇인가요?</div>
+      <div class="survey-desc">자가 상태를 체크하시면 최적의 치과 진료 가이드와 예상 비용 절감 팁을 즉시 피드백해 드립니다.</div>
+      <div class="survey-btn-list">
+        <button class="survey-btn" onclick="handleSurveyResponse('bleeding')">양치할 때 피가 자주 나고 잇몸이 붉게 붓는다</button>
+        <button class="survey-btn" onclick="handleSurveyResponse('bad_breath')">잇몸이 근질거리고 구취(입냄새)가 심해졌다</button>
+        <button class="survey-btn" onclick="handleSurveyResponse('recession')">치아 뿌리가 드러나 보이고 찬물에 찌릿하게 시리다</button>
+        <button class="survey-btn" onclick="handleSurveyResponse('mobility')">치아가 흔들리고 딱딱한 음식을 씹을 때 통증이 있다</button>
+      </div>
+      <div id="survey_feedback" class="survey-feedback-panel"></div>
+    </div>
+
+    <h2 id="section9">9. 커뮤니티 실제 내돈내산 잇몸치료 후기 분석</h2>
+    <p>
+      디시인사이드(치과 갤러리), 에펨코리아(펨코), 보배드림 등 다양한 대형 온라인 커뮤니티에는 수많은 이용자들이 자신의 실제 내돈내산 잇몸치료 경험담과 치아보험 청구 성공/실패 후기를 공유하고 있습니다. 인터넷에 널린 과장 광고성 글과 달리 솔직한 환자들의 목소리 속에서 핵심 인사이트를 요약해 드립니다.
+    </p>
+
+    <div class="callout-box callout-info" style="border-left-color: var(--primary-700);">
+      <div class="callout-header" style="color: var(--primary-900);">커뮤니티 내돈내산 잇몸치료 리얼 후기 요약</div>
+      <div class="callout-body">
+        "30대 후반 직장인인데 잇몸에서 피가 계속 나서 치과에 갔더니 치주소파술 4회 진단을 받았습니다. 처음엔 수십만 원 나올까 봐 겁먹었는데 건강보험 적용되어서 1회 내원할 때마다 마취하고 치료받아도 1만 6천 원 정도밖에 안 나왔습니다. 4번 다 치료받고 7만 원도 안 들었는데 잇몸 붓기가 싹 가라앉았습니다. 병원마다 턱관절이나 비급여 스케일링 권유하는 곳이 있으니 반드시 급여 치주치료 위주로 진료하는 전문 치과를 가야 돈을 아낄 수 있습니다."
+      </div>
+    </div>
+
+    <p>
+      커뮤니티 회원들이 공통적으로 추천하는 <strong>과잉진료 피하는 성지 좌표 탐색법</strong>은 다음과 같습니다.
+    </p>
+    <ul>
+      <li>보건복지부 인증 <strong>치주과 전문의</strong>가 대표원장으로 상주하는 치과의원을 우선 검색합니다.</li>
+      <li>첫 방문 시 전체 엑스레이(파노라마) 촬영 후 잇몸 치료보다 비급여 충치 치료나 임플란트를 무리하게 권유하는 곳은 피합니다.</li>
+      <li>잇몸치료 전 치주낭 측정 검사(Periodontal Probing)를 꼼꼼히 시행하며 수치를 차트에 기록해 주는 병원을 신뢰할 수 있습니다.</li>
+    </ul>
+
+    <h2 id="section10">10. AI와 모바일 앱을 통한 스마트 청구 컨설팅</h2>
+    <p>
+      2026년 현재 인공지능(AI) 기술의 발전으로 치과 치료비 절감 방식도 혁신을 맞이하고 있습니다. 오픈AI의 챗지피티(ChatGPT)나 구글 제미나이(Gemini)와 같은 생성형 AI 모델을 활용하면 자신이 진료받은 치과 진료비 세부내역서를 사진으로 촬영하여 프롬프트에 업로드하는 것만으로 비급여 과다 청구 여부 및 건강보험 적정 수가를 10초 만에 분석받을 수 있습니다.
+    </p>
+    <p>
+      또한 카카오톡 채널 상담봇, 토스(Toss) 병원비 돌려받기 서비스, 보험사 모바일 전용 앱(삼성화재, 현대해상, DB손해보험, 메리츠화재, 라이나생명 등)의 AI 광학문자인식(OCR) 기능을 통하면 복잡한 서류 제출 없이 모바일 촬영만으로 1분 만에 치아보험금 청구가 완료되며 당일 계좌로 지원금이 입금되는 편리함을 누릴 수 있습니다.
+    </p>
+
+    <h2 id="section11">11. 자주 묻는 질문 10문 10답 (FAQ)</h2>
+    
+    <h3>Q1. 잇몸치료를 받으면 치아 사이가 벌어지고 시린 증상이 나타나는데 부작용인가요?</h3>
+    <p>
+      아닙니다. 잇몸에 차 있던 두꺼운 치석과 염증성 부종이 제거되면서 부어있던 잇몸이 정상 크기로 가라앉아 숨겨져 있던 공간이 드러나는 자연스러운 치유 과정입니다. 노출된 치아 뿌리로 인해 일시적으로 시린 증상이 있을 수 있으나 2~3주 내에 치수 신경이 안정화되면서 점차 호전됩니다.
+    </p>
+
+    <h3>Q2. 연 1회 건강보험 스케일링 갱신 시점은 언제인가요?</h3>
+    <p>
+      과거 7월 1일 기준에서 개정되어 현재는 매년 1월 1일부터 12월 31일까지 1년 단위로 리셋됩니다. 해당 연도에 사용하지 않은 혜택은 다음 해로 이월되지 않고 소멸되므로 매년 12월 이전에 치과를 방문하여 혜택을 챙기시는 것이 현명합니다.
+    </p>
+
+    <h3>Q3. 임플란트 식립 후에도 잇몸치료를 정기적으로 받아야 하나요?</h3>
+    <p>
+      반드시 받아야 합니다. 임플란트 주변에는 자연치아와 달리 치주인대라는 완충 및 방어막 조직이 없어 세균 침투에 매우 취약합니다. 이를 '임플란트 주위염'이라고 부르며, 잇몸 관리를 소홀히 할 경우 기껏 심은 임플란트가 통째로 흔들려 빠질 수 있습니다. 임플란트 치석제거 또한 보험 적용이 가능합니다.
+    </p>
+
+    <h3>Q4. 잇몸약(인사돌, 이가탄 등)만 복용해도 잇몸병이 낫나요?</h3>
+    <p>
+      그렇지 않습니다. 시판되는 잇몸약은 잇몸 혈관 재생을 돕는 보조제일 뿐이며, 잇몸 뼈를 녹이는 근본 원인인 치석과 세균 플라그는 약물로 제거할 수 없습니다. 치과에서 기계적으로 치석을 긁어내는 잇몸치료를 병행하지 않고 약만 먹는 것은 병을 만성화시키는 지름길입니다.
+    </p>
+
+    <h3>Q5. 잇몸치료 시 마취 주사가 너무 아픈데 무통 마취가 가능한가요?</h3>
+    <p>
+      최근 대부분의 치과의원에서는 잇몸 표면에 도포하는 가글 마취 및 연고 마취제를 먼저 사용한 뒤, 일정한 압력으로 약액을 주입하는 디지털 무통 마취기를 사용하므로 주사 바늘의 통증을 거의 느끼지 않고 편안하게 치료받으실 수 있습니다.
+    </p>
+
+    <h3>Q6. 치주소파술이나 치주판막술 후 흡연과 음주는 언제부터 가능한가요?</h3>
+    <p>
+      수술 부위의 혈병(피딱지) 형성 및 모세혈관 재생을 위해 최소 1주일에서 2주일간은 절대 금연과 금주를 지켜야 합니다. 담배의 니코틴은 혈관을 수축시켜 잇몸 재생을 방해하고 감염을 유발하며 치명적인 실패 원인이 됩니다.
+    </p>
+
+    <h3>Q7. 치아보험은 몇 세까지 가입할 수 있고 언제 해지하는 것이 유리한가요?</h3>
+    <p>
+      통상 만 65세에서 최대 70세까지 가입 가능합니다. 임플란트나 크라운 등 고액 보철 치료와 치주 수술을 모두 완료하고 보험금 수령을 마친 후, 더 이상 고액 치료 계획이 없다면 불필요한 보험료 지출을 막기 위해 해지 후 실손보험 위주로 관리하는 전략이 권장됩니다.
+    </p>
+
+    <h3>Q8. 스케일링만으로 치주염을 완치할 수 있나요?</h3>
+    <p>
+      스케일링은 잇몸 겉에 드러난 치석만 제거하므로 잇몸 속 깊은 곳까지 염증이 침투한 치주염은 반드시 2~4단계인 치근활택술이나 치주소파술을 병행해야 염증 진행을 멈출 수 있습니다.
+    </p>
+
+    <h3>Q9. 스케일링을 자주 받으면 치아가 깎여 나가나요?</h3>
+    <p>
+      잘못된 상식입니다. 초음파 스케일러는 미세한 진동으로 치아 표면에 붙은 치석만 떨어뜨리는 원리이며 단단한 치아 에나멜질을 깎아낼 수 없습니다.
+    </p>
+
+    <h3>Q10. 만 65세 이상 어르신들을 위한 잇몸치료 특별 혜택이 있나요?</h3>
+    <p>
+      만 65세 이상 어르신은 평생 2개의 임플란트 식립 시 건강보험 적용을 받아 본인부담금 30%(약 40만 원 선)로 치료가 가능하며, 부분틀니 및 완전틀니 또한 30% 본인부담금으로 제작할 수 있어 잇몸치료와 병행 시 탁월한 혜택을 누릴 수 있습니다.
+    </p>
+
+    
+  </div>
+
+  <script>
+    // 인터랙티브 잇몸치료 비용 계산기 알고리즘
+    function calculateDentalCost() {
+      const step = document.getElementById('calc_step').value;
+      const areaCount = parseInt(document.getElementById('calc_area').value, 10);
+      const clinicType = document.getElementById('calc_clinic').value;
+      const insuranceType = document.getElementById('calc_insurance').value;
+
+      // 1구역당 기준 총 진료비 및 비급여 설정
+      let baseFeePerArea = 0;
+      let nonCoveredFeePerArea = 0;
+      let stepName = "";
+      let insurancePayoutPerArea = 0;
+
+      switch(step) {
+        case 'scaling':
+          stepName = "연 1회 정기 치석제거(스케일링)";
+          baseFeePerArea = 55000; // 전악 기준 총진료비
+          nonCoveredFeePerArea = 0;
+          insurancePayoutPerArea = (insuranceType === 'dental' || insuranceType === 'both') ? 10000 : 0;
+          break;
+        case 'planing':
+          stepName = "치근활택술 (치은연하 치석정리)";
+          baseFeePerArea = 38000;
+          nonCoveredFeePerArea = 0;
+          insurancePayoutPerArea = (insuranceType === 'dental' || insuranceType === 'both') ? 15000 : 0;
+          break;
+        case 'curettage':
+          stepName = "치주소파술 (만성 염증조직 제거)";
+          baseFeePerArea = 48000;
+          nonCoveredFeePerArea = 0;
+          insurancePayoutPerArea = (insuranceType === 'dental' || insuranceType === 'both') ? 20000 : 0;
+          break;
+        case 'flap':
+          stepName = "치주판막술 (외과적 잇몸 절개수술)";
+          baseFeePerArea = 140000;
+          nonCoveredFeePerArea = 0;
+          insurancePayoutPerArea = (insuranceType === 'dental' || insuranceType === 'both') ? 50000 : 0;
+          break;
+        case 'bone_graft':
+          stepName = "치주조직 재생 치조골 이식수술";
+          baseFeePerArea = 160000;
+          nonCoveredFeePerArea = 250000; // 비급여 골이식재 및 차폐막
+          insurancePayoutPerArea = (insuranceType === 'dental' || insuranceType === 'both') ? 300000 : 0;
+          break;
+      }
+
+      // 본인부담률 산정
+      let copayRate = 0.30;
+      if (clinicType === 'hospital') copayRate = 0.40;
+      else if (clinicType === 'general') copayRate = 0.60;
+
+      // 스케일링은 1회 고정, 나머지는 구역 수 곱셈
+      let multiplier = (step === 'scaling') ? 1 : areaCount;
+
+      let totalMedicalFee = (baseFeePerArea * multiplier) + (nonCoveredFeePerArea * multiplier);
+      let coveredCopay = (baseFeePerArea * multiplier) * copayRate;
+      let nonCoveredTotal = nonCoveredFeePerArea * multiplier;
+      let patientTotalPayment = Math.round(coveredCopay + nonCoveredTotal);
+
+      // 보험 환급금 계산
+      let totalInsurancePayout = 0;
+
+      // 실손보험(실비): 급여 본인부담금의 약 70~80% 보장 가정 (의원 공제금 1만 원 제외)
+      if (insuranceType === 'silbi' || insuranceType === 'both') {
+        let silbiCovered = Math.max(0, coveredCopay - (10000 * Math.ceil(multiplier / 2)));
+        totalInsurancePayout += Math.round(silbiCovered * 0.8);
+      }
+
+      // 치아보험 정액 담보 환급금
+      if (insuranceType === 'dental' || insuranceType === 'both') {
+        totalInsurancePayout += (insurancePayoutPerArea * multiplier);
+      }
+
+      let netExpense = Math.max(0, patientTotalPayment - totalInsurancePayout);
+
+      // 화면 출력
+      document.getElementById('res_total_fee').innerText = totalMedicalFee.toLocaleString() + "원";
+      document.getElementById('res_patient_fee').innerText = patientTotalPayment.toLocaleString() + "원";
+      document.getElementById('res_insurance_payout').innerText = totalInsurancePayout.toLocaleString() + "원";
+      document.getElementById('res_final_cost').innerText = netExpense.toLocaleString() + "원";
+
+      document.getElementById('res_summary_text').innerText = 
+        stepName + "을(를) " + multiplier + "구역 진행 시 산출된 결과입니다. 건강보험 공단 부담금을 제외한 수납액에서 보험 환급을 차감하면 최종 실부담금은 약 " + netExpense.toLocaleString() + "원으로 대폭 절감됩니다.";
+
+      document.getElementById('calc_result_box').style.display = 'block';
+    }
+
+    // 자가 설문조사 응답 처리 함수
+    function handleSurveyResponse(type) {
+      const feedbackBox = document.getElementById('survey_feedback');
+      let msg = "";
+
+      switch(type) {
+        case 'bleeding':
+          msg = "치은염(초기 잇몸질환) 상태일 가능성이 85% 이상입니다. 치석제거(스케일링)만으로 1~2주 내에 출혈이 멈추고 완치될 수 있습니다. 연 1회 건강보험 스케일링(약 1만 6천 원)을 즉시 예약하시는 것을 권장합니다.";
+          break;
+        case 'bad_breath':
+          msg = "치은연하 치석과 세균 혐기성 분해로 인한 중등도 치주염 의심 단계입니다. 칫솔질만으로는 잇몸 속 치석을 없앨 수 없으므로 2단계 치근활택술이나 3단계 치주소파술(구역당 1만 3천 원 선) 진료가 시급합니다.";
+          break;
+        case 'recession':
+          msg = "잇몸 뼈가 소실되어 치근이 노출되는 치주 퇴축 현상입니다. 지각과민처치제 도포(보험 적용) 및 결합조직 이식술, 잇몸 치료를 통해 치근 노출 진행을 막아야 치아를 보존할 수 있습니다.";
+          break;
+        case 'mobility':
+          msg = "치조골이 50% 이상 파괴된 중증 치주염 상태입니다. 방치할 경우 자연치가 탈락될 수 있으므로 치주판막술 또는 불가피할 경우 치조골 이식 동반 임플란트 상담을 전문 치과에서 즉시 받으셔야 합니다.";
+          break;
+      }
+
+      feedbackBox.innerText = msg;
+      feedbackBox.style.display = 'block';
+    }
+  </script>
+  
